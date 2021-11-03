@@ -37,11 +37,65 @@ class Calculator():
                 print('Invalid number')
                 continue
             break
-        print(self.num1, ' ', self.operator, ' ', self.num2, ' = ', end='')
+        print(self.num1, self.operator, self.num2, '= ', end='')
         
-        if
+        if self.operator == '+':
+            Operations.addition(self)
+        elif self.operator == '-':
+            Operations.substraction(self)
+        elif self.operator == 'x':
+            Operations.multiplication(self)
+        elif self.operator == '/':
+            Operations.division(self)
+        elif self.operator == '^':
+            Operations.power(self)
+        print(self.score)
 
-Calculator()
+        while True:
+            print('What do you want to do now?\n(C)alculations, (O)ptions, (Q)uit?')
+            response = input('> ')
+            if response.upper().startswith('C'):
+                Calculator()
+            elif response.upper().startswith('O'):
+                Options.intro(self)
+                break
+            elif response.upper().startswith('Q'):
+                print('Have a nice day')
+                sys.exit()
+            else:
+                print('Invalid input. Type "C" for calculations, "O" for options or "Q" to exit program')
+                continue
+
+class Operations(Calculator):
+    def addition(self):
+        self.score = self.num1 + self.num2
+        return self.score
+    def substraction(self):
+        self.score = self.num1 - self.num2
+        return self.score
+    def multiplication(self):
+        self.score = self.num1 * self.num2
+        return self.score
+    def division(self):
+        self.score = self.num1 * self.num2
+        return self.score
+    def power(self):
+        self.score = self.num1 * self.num2
+        return self.score
+
+class Options(Calculator):
+    math_equations = ['Greatest Common Divisor', 'Least Common Multiple', 'Fibonacci sequence', 'Collatz sequence', 'Factorial']
+    def intro(self):
+        print(f'This mode is going to utilize your calculated score of {self.score},\n as an input to different mathematical equations.')
+        
+        while True:
+            print('Available equations are:')
+            for n, i in enumerate(Options.math_equations):
+                print(n+'.', i , end = ' | ' )
+        
+
+if __name__ == "__main__":
+    Calculator()
 
 # print('Welcome to calculator')
 # print('''Available operation commands:
